@@ -7,8 +7,8 @@ namespace FlappyBird
     [RequireComponent(typeof(BoxCollider2D))]
     public class RepeatObject : MonoBehaviour
     {
-        public float padding = 0.01f;
-
+        public float padding = 0.1f;
+        public int speed;
         private BoxCollider2D box;
         private float width;
 
@@ -26,12 +26,14 @@ namespace FlappyBird
         {
             // Store the position in a smaller variable
             Vector3 pos = transform.position;
+            pos += Vector3.left * speed * Time.deltaTime * Time.timeScale;
             // Is the position on the x outside of the camera?
             if(pos.x < -width)
             {
                 // Repeat the object
                 Repeat();
             }
+            
         }
 
         void Repeat()

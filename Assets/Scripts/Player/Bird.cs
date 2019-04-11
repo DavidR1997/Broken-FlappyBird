@@ -8,7 +8,7 @@ namespace FlappyBird
     public class Bird : MonoBehaviour
     {
         public float upForce;           // Upward force of the "flap"
-        private bool isDead = false;    // Has the player collider with the wall? 
+        public bool isDead = false;    // Has the player collider with the wall? 
         private Rigidbody2D rigid;
 
         // Use this for initialization
@@ -32,6 +32,7 @@ namespace FlappyBird
         {
             // Cancel velocity
             rigid.velocity = Vector2.zero;
+            Mathf.Clamp(rigid.rotation, 0 ,0);
             // Bird is now dead
             isDead = true;
             // Tell the GameManager about it
